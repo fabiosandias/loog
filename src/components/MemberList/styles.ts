@@ -56,3 +56,38 @@ export const ButtonView = styled.div`
     font-size: 22px;
   }
 `;
+
+export const UserDetail = styled.div`
+  width: 100%;
+  height: 200px;
+  display: flex;
+  padding-top: 30px;
+`;
+export const BoxLeft = styled.div`
+  width: 50%;
+  border-right: 1px solid ${(props) => props.theme.colors.primary};
+
+  img {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+  }
+`;
+export const BoxRight = styled.div`
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 30px;
+
+  span {
+    color: ${(props) => props.theme.colors.black};
+    text-align: left;
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: bold;
+
+    > span {
+      color: ${(props) => props.theme.colors.primary};
+    }
+  }
+`;

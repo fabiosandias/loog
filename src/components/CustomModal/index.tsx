@@ -12,7 +12,7 @@ const CustomModal = ({ showModal, index, handleModal, children }: IProps) => {
   return (
     <Container className={`modal ${showModal ? "active" : ""}`}>
       <ModalContainer>
-        <h2>Titulo</h2>
+        <h2>Detalhe do usuário</h2>
         {children}
         <ModalButtons>
           <button type="button" onClick={() => handleModal(false, index)}>

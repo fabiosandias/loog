@@ -43,12 +43,13 @@ export const ModalButtons = styled.div`
   width: 100%;
 
   > button {
-    background: none;
-    box-shadow: none;
-    color: #548;
-    font-size: 14px;
+    background: ${(props) => props.theme.colors.primary};
+    border: none;
+
+    color: ${(props) => props.theme.colors.white};
+    font-size: 18px;
     line-height: 24px;
     margin-left: 16px;
-    padding: 0;
+    padding: 10px 20px;
   }
 `;

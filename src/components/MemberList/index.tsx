@@ -1,4 +1,4 @@
-import { IMembers } from "interfaces/IMembers";
+import { IMembers, IUserGitHub } from "interfaces/IMembers";
 import {
   Container,
   Avatar,
@@ -6,11 +6,17 @@ import {
   Username,
   LinkGitHub,
   ButtonView,
+  UserDetail,
+  BoxLeft,
+  BoxRight,
 } from "./styles";
 import { BsPersonFill } from "react-icons/bs";
 import CustomModal from "../CustomModal/index";
 import { useState } from "react";
 import { apiConfig } from "utils/constants";
+import GiHubService from "services/GitHubService";
+import dayjs from "dayjs";
+import Loading from "components/Loading";
 
 interface IProps {
   members: IMembers[];
@@ -19,14 +25,34 @@ interface IProps {
 const MemberList = ({ members, oranization }: IProps) => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [memberIndex, setMemberIndex] = useState<number>(0);
+  const [user, setUser] = useState<IUserGitHub>({} as IUserGitHub);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handleChangeModal = (isShow: boolean, index: number) => {
     setShowModal(isShow);
     setMemberIndex(index);
   };
 
+  const handleShowDatailUser = async (
+    isShow: boolean,
+    index: number,
+    username: string
+  ) => {
+    try {
+      setLoading(true);
+      const { data } = await GiHubService.getUserByUsername(username);
+      setUser(data);
+      setShowModal(isShow);
+      setMemberIndex(index);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
+      {loading && <Loading />}
       <Container>
         {members.length > 0
           ? members.map((member, index) => (
@@ -48,7 +74,9 @@ const MemberList = ({ members, oranization }: IProps) => {
                 <ButtonView>
                   <button
                     type="button"
-                    onClick={() => handleChangeModal(true, index)}
+                    onClick={() =>
+                      handleShowDatailUser(true, index, member.login)
+                    }
                   >
                     <BsPersonFill />
                   </button>
@@ -62,7 +90,33 @@ const MemberList = ({ members, oranization }: IProps) => {
         handleModal={handleChangeModal}
         showModal={showModal}
       >
-        {members[memberIndex].login}
+        {/* {members.length > 0 ? members[memberIndex].login : ""} */}
+
+        {Object.keys(user).length > 0 ? (
+          <UserDetail>
+            <BoxLeft>
+              <img src={user.avatar_url} alt={user.name} />
+            </BoxLeft>
+            <BoxRight>
+              <span>
+                Nome: <span>{user.name}</span>
+              </span>
+              <span>
+                Seguirdor: <span>{user.followers}</span>
+              </span>
+              <span>
+                Seguirdor: <span>{user.public_repos}</span>
+              </span>
+              <span>
+                Usuário desde:{" "}
+                <span>{dayjs(user.created_at).format("DD/MM/YYYY")}</span>
+              </span>
+              <span></span>
+            </BoxRight>
+          </UserDetail>
+        ) : (
+          ""
+        )}
       </CustomModal>
     </>
   );
