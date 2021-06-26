@@ -5,7 +5,7 @@ import { Route, Switch } from "react-router-dom";
 const AppRouter = () => (
   <Layout>
     <Switch>
-      <Route exact path="/" component={Home} />
+      <Route exact={true} path="/" component={Home} />
     </Switch>
   </Layout>
 );

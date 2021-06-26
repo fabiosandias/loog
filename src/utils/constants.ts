@@ -3,4 +3,11 @@ export const logoImageBase64 =
 
 export enum apiConfig {
   BASE_URL = "https://ads-onboarding-api-main.develop.stefanini.io",
+  URL_GITHUB = "https://github.com",
 }
+
+export const oranizations = [
+  { id: 1, label: "Facebook (React)", value: "Facebook" },
+  { id: 2, label: "Angular", value: "Angular" },
+  { id: 3, label: "Vuejs", value: "Vuejs" },
+];
