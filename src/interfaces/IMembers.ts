@@ -4,7 +4,7 @@ export interface IMembers {
   login: string;
 }
 
-export interface IModelGitHub {
+export interface IModelMemberGitHub {
   login: string;
   id: number;
   node_id: string;

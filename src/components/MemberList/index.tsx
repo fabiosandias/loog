@@ -17,33 +17,25 @@ import { apiConfig } from "utils/constants";
 import GiHubService from "services/GitHubService";
 import dayjs from "dayjs";
 import Loading from "components/Loading";
-
 interface IProps {
   members: IMembers[];
   oranization: string;
 }
 const MemberList = ({ members, oranization }: IProps) => {
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [memberIndex, setMemberIndex] = useState<number>(0);
   const [user, setUser] = useState<IUserGitHub>({} as IUserGitHub);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const handleChangeModal = (isShow: boolean, index: number) => {
+  const handleChangeModal = (isShow: boolean) => {
     setShowModal(isShow);
-    setMemberIndex(index);
   };
 
-  const handleShowDatailUser = async (
-    isShow: boolean,
-    index: number,
-    username: string
-  ) => {
+  const handleShowDatailUser = async (username: string) => {
     try {
       setLoading(true);
       const { data } = await GiHubService.getUserByUsername(username);
       setUser(data);
-      setShowModal(isShow);
-      setMemberIndex(index);
+      setShowModal(true);
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -75,7 +67,7 @@ const MemberList = ({ members, oranization }: IProps) => {
                   <button
                     type="button"
                     onClick={() =>
-                      handleShowDatailUser(true, index, member.login)
+                      handleShowDatailUser(member.login)
                     }
                   >
                     <BsPersonFill />
@@ -85,13 +77,11 @@ const MemberList = ({ members, oranization }: IProps) => {
             ))
           : ""}
       </Container>
+      
       <CustomModal
-        index={memberIndex}
         handleModal={handleChangeModal}
         showModal={showModal}
       >
-        {/* {members.length > 0 ? members[memberIndex].login : ""} */}
-
         {Object.keys(user).length > 0 ? (
           <UserDetail>
             <BoxLeft>
@@ -105,7 +95,7 @@ const MemberList = ({ members, oranization }: IProps) => {
                 Seguirdor: <span>{user.followers}</span>
               </span>
               <span>
-                Seguirdor: <span>{user.public_repos}</span>
+                Repositórios: <span>{user.public_repos}</span>
               </span>
               <span>
                 Usuário desde:{" "}
