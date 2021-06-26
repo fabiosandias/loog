@@ -79,7 +79,6 @@ const Home = () => {
               <SelectSearch>
                 <select
                   value={organization}
-                  name="organization"
                   onChange={handleChangeOrganization}
                 >
                   {_org.map((org) => (
@@ -94,7 +93,6 @@ const Home = () => {
                   onChange={(event) =>
                     filterMembersByUsername(event.target.value)
                   }
-                  name="username"
                   type="text"
                 />
               </InputSearch>

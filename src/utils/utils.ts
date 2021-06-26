@@ -1,6 +1,6 @@
-import { IModelGitHub } from "interfaces/IMembers";
+import { IModelMemberGitHub } from "interfaces/IMembers";
 
-export const reduceMemberObject = (data: IModelGitHub[]) => {
+export const reduceMemberObject = (data: IModelMemberGitHub[]) => {
   return data.map(
     (member) => ({
       id: member.id,
