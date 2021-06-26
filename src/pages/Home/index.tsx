@@ -1,6 +1,6 @@
 import { useState } from "react";
 import MemberList from "components/MemberList";
-import { oranizations as __ } from "utils/constants";
+import { oranizations as _org } from "utils/constants";
 import {
   Container,
   HomeHeader,
@@ -8,31 +8,26 @@ import {
   SelectSearch,
   InputSearch,
 } from "pages/Home/styles";
-
-import instance from "services/Interceptores";
+import GiHubService from "services/GitHubService";
+import { useEffect } from "react";
+import { IMembers } from "interfaces/IMembers";
+import { reduceMemberObject } from "utils/utils";
 
 const Home = () => {
-  const [showModal, setShowModal] = useState<boolean>(false);
-
-  const members = [
-    {
-      id: 1249083,
-      avatar_url: "https://avatars.githubusercontent.com/u/1249083?v=4",
-      login: "fabiosandias",
-    },
-
-    {
-      id: 1249083,
-      avatar_url: "https://avatars.githubusercontent.com/u/1249083?v=4",
-      login: "SanderElias",
-    },
-  ];
+  const [members, setMembers] = useState<IMembers[]>([]);
 
   const getAllOranization = async () => {
     try {
-      const { data } = await instance.get();
-    } catch (error) {}
+      const { data } = await GiHubService.getAll("facebook");
+      setMembers(reduceMemberObject(data));
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  useEffect(() => {
+    getAllOranization();
+  }, []);
 
   return (
     <Container>
@@ -40,7 +35,7 @@ const Home = () => {
         <SelectSearch>
           <select name="">
             <option value="">Selecione</option>
-            {__.map((org) => (
+            {_org.map((org) => (
               <option key={org.id} value={org.value}>
                 {org.label}
               </option>
@@ -53,7 +48,11 @@ const Home = () => {
       </HomeHeader>
 
       <HomeContent>
-        <MemberList members={members} oranization="Facebook" />
+        {members.length > 0 ? (
+          <MemberList members={members} oranization="Facebook" />
+        ) : (
+          ""
+        )}
       </HomeContent>
     </Container>
   );

@@ -30,32 +30,30 @@ const MemberList = ({ members, oranization }: IProps) => {
       <Container>
         {members.length > 0
           ? members.map((member, index) => (
-              <>
-                <li key={member.id}>
-                  <Avatar>
-                    <img src={member.avatar_url} alt="Foto do perfil" />
-                  </Avatar>
-                  <Oranization>
-                    <p>{member.login}</p>
-                  </Oranization>
-                  <Username> {oranization} </Username>
-                  <LinkGitHub
-                    target="_blank"
-                    href={`${apiConfig.URL_GITHUB}/${member.login}`}
-                  >
-                    Ver perfil no GitHub
-                  </LinkGitHub>
+              <li key={`${member.id}-${member.login}`}>
+                <Avatar>
+                  <img src={member.avatar_url} alt="Foto do perfil" />
+                </Avatar>
+                <Oranization>
+                  <p>{member.login}</p>
+                </Oranization>
+                <Username> {oranization} </Username>
+                <LinkGitHub
+                  target="_blank"
+                  href={`${apiConfig.URL_GITHUB}/${member.login}`}
+                >
+                  Ver perfil no GitHub
+                </LinkGitHub>
 
-                  <ButtonView>
-                    <button
-                      type="button"
-                      onClick={() => handleChangeModal(true, index)}
-                    >
-                      <BsPersonFill />
-                    </button>
-                  </ButtonView>
-                </li>
-              </>
+                <ButtonView>
+                  <button
+                    type="button"
+                    onClick={() => handleChangeModal(true, index)}
+                  >
+                    <BsPersonFill />
+                  </button>
+                </ButtonView>
+              </li>
             ))
           : ""}
       </Container>

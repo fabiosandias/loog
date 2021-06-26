@@ -4,7 +4,7 @@ const config: AxiosRequestConfig = {
   baseURL: process.env.REACT_APP_BASE_URL,
   headers: {
     "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*",
+    Accept: "application/vnd.github.v3+json",
   },
   responseType: "json",
 };
