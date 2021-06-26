@@ -7,7 +7,7 @@ export enum apiConfig {
 }
 
 export const oranizations = [
-  { id: 1, label: "Facebook (React)", value: "Facebook" },
-  { id: 2, label: "Angular", value: "Angular" },
-  { id: 3, label: "Vuejs", value: "Vuejs" },
+  { id: 1, label: "Facebook (React)", value: "facebook" },
+  { id: 2, label: "Angular", value: "angular" },
+  { id: 3, label: "Vuejs", value: "vuejs" },
 ];
