@@ -1,4 +1,4 @@
-# Projeto com Create-react-app usando typescript
+# Projeto criado com `create-react-app` usando typescript
 
 Esse projeto tem como principal objetivo mostrar os usuários de uma organização do github. A interface permite o usuário escolher o grupo que ele deseja fazer a busca: (Facebook, Angular e Vuejs).
 
