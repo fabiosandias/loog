@@ -15,7 +15,7 @@ Esse filtro não busca ná API do GITHUB, ele filtra o objeto em memória.
 Como extra, eu coloquei a página de login e tambem a opção de escolher a cor do tema, usando context api do react.
 ## Instruções para rodar o projeto
 
-Entre dentro do projeto e rode:
+Depois de clonar o projeto, entre dentro da pasta `loog`, isto é, dentro do projeto e rode:
 ### `yarn` para instalar as dependências.
 Depois de instaladas rode o comando abaixo:
 ### `yarn start` para iniciar a aplicação
