@@ -23,6 +23,14 @@ Depois de instaladas rode o comando abaixo:
 O aplicativo irá executar na parta 3000 caso não esteja sendo ultilizada, senão, ele irá sugerir outra porta.
 Para ver o projeto abra: [http://localhost:3000](http://localhost:3000) em seu navegador.
 
+### Atenção
+Para entrar no sistema o usuário e senha é:
+email: `teste@teste.com.br`
+senha: `123`
+
+Por padrão os dados do usuário ja vem carregado no input da tela de login.
+Basta somente clicar em `Entrar`
+
 Para realizar um build em produção, execute o compando abaixo
 ### `yarn build`
 

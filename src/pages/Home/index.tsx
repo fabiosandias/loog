@@ -18,7 +18,9 @@ import Loading from "components/Loading";
 const Home = () => {
   const [members, setMembers] = useState<IMembers[]>([]);
   const [copyMembers, setCopyMembers] = useState<IMembers[]>([]);
-  const [perPage, setPerPerge] = useState<number>(5);
+  const [perPage, setPerPerge] = useState<number>(
+    Number(process.env.REACT_APP_PER_PAGE)
+  );
   const [loading, setLoading] = useState<boolean>(true);
   const [restartLoading, setRestartLoading] = useState<boolean>(false);
   const [organization, setOrganization] = useState<string>("facebook");
@@ -109,7 +111,13 @@ const Home = () => {
           <HomeContentButton>
             <button
               type="button"
-              onClick={() => getAllMembers(organization, 5, true)}
+              onClick={() =>
+                getAllMembers(
+                  organization,
+                  Number(process.env.REACT_APP_PER_PAGE),
+                  true
+                )
+              }
             >
               Carregar mais
             </button>
