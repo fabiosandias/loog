@@ -1,7 +1,8 @@
-import React from "react";
-
-import { Container, ModalButtons, ModalContainer } from "./styles";
-
+import {
+  Container,
+  ModalButtons,
+  ModalContainer,
+} from "components/CustomModal/styles";
 interface IProps {
   children: React.ReactNode;
   showModal: boolean;

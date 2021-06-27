@@ -23,22 +23,40 @@ export const Logo = styled.div`
 `;
 
 export const LogOutAndSwitch = styled.div`
-  width: 180px;
+  width: 400px;
   height: 70px;
   display: flex;
   justify-content: space-between;
 `;
 export const SwitchBox = styled.div`
-  width: 50px;
+  width: 120px;
   height: 70px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  > span {
+    margin: 10px;
+    color: ${(props) => props.theme.colors.white};
+    font-weight: bold;
+  }
 `;
 export const LogOutBox = styled.div`
-  width: 70px;
+  width: 300px;
   height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: ${(props) => props.theme.colors.white};
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  > button {
+    font-size: 15px;
+    border: none;
+    color: ${(props) => props.theme.colors.white};
+    background: none;
+    margin-top: 10px;
+  }
 `;
