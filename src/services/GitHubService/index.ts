@@ -3,14 +3,14 @@ import instance from "services/Interceptores";
 import { apiConfig } from "utils/constants";
 
 class GiHubService extends Component {
-  static async getAll(org: string, perPage: number = 5) {
-    return await instance(
+  static getAll(org: string, perPage: number = 5) {
+    return instance(
       `${apiConfig.BASE_URL}/orgs/${org}/members?per_page=${perPage}`
     );
   }
 
-  static async getUserByUsername(username: string) {
-    return await instance(`${apiConfig.BASE_URL}/users/${username}`);
+  static getUserByUsername(username: string) {
+    return instance(`${apiConfig.BASE_URL}/users/${username}`);
   }
 }
 
