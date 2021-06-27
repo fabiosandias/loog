@@ -12,7 +12,7 @@ const config: AxiosRequestConfig = {
 const instance = axios.create(config);
 
 instance.interceptors.request.use(
-  (config) => config,
+  (request) => request,
   (error) => Promise.reject(error)
 );
 instance.interceptors.response.use(

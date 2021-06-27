@@ -4,10 +4,10 @@ Esse projeto tem como principal objetivo mostrar os usuários de uma organizaç�
 
 Por padrão ele Busca o grupo do Facebook.
 
-Por configuração, permitir o carregamento de 5 resultados por página.
+Por padrão foi criado uma variavel no .env que permite o carregamento de 5 resultados por página.
 No final da página existe um botão para poder carregar mais resultados, e ele acrescenta mais 5.
 
-Listado os resultados, o usuário pode ver o perfil no próprio git, no link `ver perfil no git`, ou pode clicar no botão para abrir um mosal que detalha as informações requisitadas no requisito.  `incluir informações a mais além do que foi pedido.`
+Depois de listar os resultados, o usuário pode ver o perfil no próprio git clicando no link `ver perfil no git`, ou pode clicar no botão para abrir um modal que detalha as informações requisitadas.  Obs: `incluir informações a mais além do que foi pedido.`
 
 E no campo de busca existe um filho para os usuário já listados.
 Esse filtro não busca ná API do GITHUB, ele filtra o objeto em memória.
